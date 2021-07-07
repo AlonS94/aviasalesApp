@@ -1,0 +1,43 @@
+$clrActive         : #FFFFFF;
+$bcActive          : #2196F3;
+$clrNonActive      : hsl(0, 0%, 29%);
+$clrBorderNonActive:#DFE5EC;
+
+@mixin font($family, $fs, $lh, $ls, $c) {
+    font-family   : $family;
+    font-size     : $fs;
+    line-height   : $lh;
+    letter-spacing: $ls;
+    color         : $c;
+}
+
+.SortResults {
+    display: flex;
+
+
+    &__btn {
+        width : 50%;
+        height: 50px;
+
+        &:first-child {
+            border-radius: 6px 0 0 6px;
+        }
+
+        &:last-child {
+            border-radius: 0 6px 6px 0;
+        }
+    }
+
+    &__btnActive {
+        @include font('Open Sans', 12px, 20px, 0.5px, $clrActive);
+        background-color: $bcActive;
+    }
+
+    &__btnNonActive {
+        border: 1px solid $clrBorderNonActive;
+    }
+
+    &_margin {
+        margin-bottom: 20px;
+    }
+}
