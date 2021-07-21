@@ -6,7 +6,7 @@ export default class DataAPI {
 
     if (!resures.ok) {
       if (resures.status === 500) return { stop: false, tickets: [] };
-      throw new Error(`Error dasdass${resures.status}`);
+      throw new Error(`Error ${resures.status}`);
     }
     const result = await resures.json();
     return result;

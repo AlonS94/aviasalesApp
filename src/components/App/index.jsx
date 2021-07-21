@@ -6,34 +6,16 @@ import valueDispatch from '../Redux/actions';
 import HeaderLogo from '../Header-logo';
 import './App.scss';
 import Main from '../Main';
-import DataAPI from '../../data-API';
 
-const App = ({ searchId, getFlights, returnID, startLoading, endLoading }) => {
-  const API = new DataAPI();
-
-  const createSearchId = () => {
-    if (searchId) return;
-    API.getSearchId().then((id) => {
-      returnID(id);
-    });
-  };
-
+const App = ({ searchId, getFlights, returnID }) => {
   const getTickets = () => {
     if (searchId) {
-      startLoading();
-      API.getTickets(searchId).then((respons) => {
-        const newTickets = respons.tickets.filter((elem, index) => index <= 4);
-        getFlights(newTickets);
-        endLoading();
-        if (!respons.stop) {
-          getTickets();
-          endLoading();
-        }
-      });
+      getFlights(searchId);
     }
   };
+
   useEffect(() => {
-    createSearchId();
+    returnID();
   }, []);
 
   useEffect(() => {
@@ -58,16 +40,12 @@ App.propTypes = {
   searchId: PropTypes.string,
   getFlights: PropTypes.func,
   returnID: PropTypes.func,
-  startLoading: PropTypes.func,
-  endLoading: PropTypes.func,
 };
 
 App.defaultProps = {
   searchId: '',
   getFlights: () => {},
   returnID: () => {},
-  startLoading: () => {},
-  endLoading: () => {},
 };
 
 export default connect(mapStateToProps, valueDispatch)(App);
