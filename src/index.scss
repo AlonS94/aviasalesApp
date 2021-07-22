@@ -1,8 +1,20 @@
-@import './null.scss';
+@import './normalize.scss';
 
 $bc : #F3F7FA;
 
-body{
+body {
     background-color: $bc;
-    padding: 0 10%;
+    padding         : 0 10%;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-weight: 400;
+    src        : url("../src/font/OpenSans-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-weight: 600;
+    src        : url('../src/font/OpenSans-SemiBold.woff') format("woff");
 }

@@ -1,0 +1,62 @@
+$clrPrice    : #2196F3;
+$clrInfo     :#A0B0B9;
+$clrDetalInfo: #4A4A4A;
+$bc          : #FFFFFF;
+
+@mixin font($family, $fw, $fs, $lh, $ls, $c) {
+    font-family   : $family;
+    font-weight   : $fw;
+    font-size     : $fs;
+    line-height   : $lh;
+    letter-spacing: $ls;
+    color         : $c;
+}
+
+.CardResults {
+    background-color: $bc;
+    border-radius   : 7px;
+    display         : grid;
+    grid-auto-rows  : 1fr;
+
+
+    &_padding {
+        padding: 0 50px 0 20px;
+    }
+
+    &_margin {
+        margin-bottom: 20px;
+    }
+
+    &__header {
+        display              : grid;
+        grid-template-columns: 2fr 1fr;
+        @include font('Open Sans', 600, 24px, 24px, 0, $clrPrice);
+
+        &_padding {
+            padding: 20px 0 10px 0;
+        }
+    }
+
+    &__flightInformation {
+        display              : grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows   : 1fr;
+        @include font('Open Sans', 600, 12px, 18px, 0.5px, $clrInfo);
+
+        &_padding {
+            padding: 10px 0;
+
+            &:last-child {
+                padding-bottom: 20px;
+            }
+        }
+    }
+
+    &__detailedInformation {
+        @include font('Open Sans', 600, 14px, 21px, 0, $clrDetalInfo);
+    }
+}
+
+.hidden {
+    display: none;
+}

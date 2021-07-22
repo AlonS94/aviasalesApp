@@ -1,26 +1,23 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { useEffect } from 'react';
-import valueDispatch from '../Redux/actions';
-import HeaderLogo from '../Header-logo';
-import './App.scss';
+import valueDispatch from '../../Redux/actions';
+import HeaderLogo from '../HeaderLogo';
 import Main from '../Main';
 
 const App = ({ searchId, getFlights, returnID }) => {
-  const getTickets = () => {
-    if (searchId) {
-      getFlights(searchId);
-    }
-  };
-
   useEffect(() => {
     returnID();
-  }, []);
+  }, [returnID]);
 
   useEffect(() => {
+    const getTickets = () => {
+      if (searchId) {
+        getFlights(searchId);
+      }
+    };
     getTickets();
-  }, [searchId]);
+  }, [getFlights, searchId]);
 
   return (
     <>

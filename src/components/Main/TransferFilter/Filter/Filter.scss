@@ -1,0 +1,62 @@
+$color      : #4A4A4A;
+$nonActiveCB: #9ABBCE;
+$ActiveCB   : #2196F3;
+
+@mixin font($family, $fw, $fs, $lh, $ls, $c) {
+    font-family   : $family;
+    font-weight   : $fw;
+    font-size     : $fs;
+    line-height   : $lh;
+    letter-spacing: $ls;
+    color         : $c;
+}
+
+
+
+.TransferFilter {
+    @include font('Open Sans', 400, 13px, 20px, 0, $color);
+
+
+    &_padding {
+        padding     : 10px 0;
+        padding-left: 50px;
+
+
+        &:last-child {
+            padding-bottom: 20px;
+        }
+    }
+
+
+
+    &__header {
+        @include font('Open Sans', 600, 13px, 20px, 0, $color);
+
+        &_padding {
+            padding: 20px 0 10px 20px;
+        }
+    }
+
+    &__checkbox {
+        appearance: none;
+
+        &:checked+.checkbox {
+            background  : url('./img/Shape.png') no-repeat center;
+            border-color: $ActiveCB;
+        }
+    }
+}
+
+.checkbox {
+    position     : absolute;
+    width        : 20px;
+    height       : 20px;
+    margin-left  : -30px;
+    border       : 1px solid $nonActiveCB;
+    border-radius: 4px;
+}
+
+li:hover {
+    background-color: rgba(241, 252, 255, 1);
+    ;
+}

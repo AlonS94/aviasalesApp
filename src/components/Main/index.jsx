@@ -1,6 +1,6 @@
 import React from 'react';
-import TransferFilter from './Transfer-filter';
-import SearchResults from './Search-results';
+import TransferFilter from './TransferFilter';
+import SearchResults from './SearchResults';
 import './Main.scss';
 
 const Main = () => (
