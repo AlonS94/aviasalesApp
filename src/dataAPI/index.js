@@ -5,7 +5,6 @@ export default class DataAPI {
     const resures = await fetch(`${this.url}${urls}`, body);
 
     if (!resures.ok) {
-      if (resures.status === 500) return { stop: false, tickets: [] };
       throw new Error(`Error ${resures.status}`);
     }
     const result = await resures.json();

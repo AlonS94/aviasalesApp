@@ -11,13 +11,18 @@ const { startLoading, endLoading } = bindActionCreators(actions, dispatch);
 const getFlights = (searchId) =>
   function restart() {
     startLoading();
-    API.getTickets(searchId).then((respons) => {
-      const tickets = respons.tickets.filter((elem, index) => index <= 4);
-      const { stop } = respons;
-      dispatch({ type: 'getFlights', tickets });
-      endLoading();
-      if (!stop) restart(searchId);
-    });
+    API.getTickets(searchId)
+      .then((respons) => {
+        const tickets = respons.tickets.slice(0, 5);
+        const { stop } = respons;
+        dispatch({ type: 'getFlights', tickets });
+        endLoading();
+        if (!stop) restart(searchId);
+      })
+      .catch(() => {
+        endLoading();
+        restart();
+      });
   };
 
 export default getFlights;
